@@ -1,127 +1,46 @@
 public struct AVLTree<Element: Comparable> {
-  var _root: _Node?
+  @usableFromInline
+  var root: _Node?
   
+  @inlinable @inline(__always)
   public init() {}
 }
 
 extension AVLTree {
+  @inlinable @inline(__always)
   public var orderedElements: [Element] {
     var result: [Element] = []
-    __inOrderTraverse(_root, result: &result)
+    _inOrderTraverse(root, result: &result)
     return result
   }
   
-  private func __inOrderTraverse(
-    _ node: _Node?,
-    result: inout [Element]
-  ) {
-    guard let node = node else {
-      return
-    }
-    __inOrderTraverse(node._leftChild, result: &result)
-    result.append(node._value)
-    __inOrderTraverse(node._rightChild, result: &result)
-  }
-  
+  @inlinable @inline(__always)
   public mutating func insert(_ newElement: Element) {
-    _update()
-    _root = __insert(newElement, from: _root)
+    update()
+    root = _insert(newElement, from: root)
   }
   
-  private func __insert(
-    _ newElement: Element,
-    from node: _Node?
-  ) -> _Node {
-    guard let node = node else {
-      return _Node(value: newElement)
-    }
-    if newElement < node._value {
-      node._leftChild = __insert(newElement, from: node._leftChild)
-    } else {
-      node._rightChild = __insert(newElement, from: node._rightChild)
-    }
-    return _balance(node)
-  }
-  
+  @inlinable
   public func contains(_ element: Element) -> Bool {
-    var currentNode = _root
+    var currentNode = root
     while let node = currentNode {
-      if element < node._value {
-        currentNode = node._leftChild
-      } else if element == node._value {
+      if element < node.value {
+        currentNode = node.leftChild
+      } else if element == node.value {
         return true
       } else {
-        currentNode = node._rightChild
+        currentNode = node.rightChild
       }
     }
     return false
   }
   
+  @inlinable @inline(__always)
   @discardableResult
   public mutating func remove(_ element: Element) -> Element? {
-    _update()
+    update()
     var removedElement: Element?
-    _root = __remove(element, from: _root, result: &removedElement)
+    root = _remove(element, from: root, result: &removedElement)
     return removedElement
-  }
-  
-  private func __remove(
-    _ element: Element,
-    from node: _Node?,
-    result: inout Element?
-  ) -> _Node? {
-    guard let node = node else {
-      return nil
-    }
-    var newNode = node
-    if element == node._value {
-      result = element
-      if let leftChild = node._leftChild {
-        if let rightChild = node._rightChild {
-          if let min = rightChild.__removeFarLeftLeaf() {
-            newNode._value = min
-          } else {
-            newNode._value = rightChild._value
-            newNode._rightChild = nil
-          }
-        } else {
-          newNode = leftChild
-        }
-      } else {
-        if let rightChild = node._rightChild {
-          newNode = rightChild
-        } else {
-          return nil
-        }
-      }
-    } else if element < node._value {
-      newNode._leftChild = __remove(
-        element,
-        from: node._leftChild,
-        result: &result
-      )
-    } else {
-      newNode._rightChild = __remove(
-        element,
-        from: node._rightChild,
-        result: &result
-      )
-    }
-    return _balance(newNode)
-  }
-}
-
-extension AVLTree._Node {
-  fileprivate func __removeFarLeftLeaf() -> Value? {
-    guard var currentLeft = _leftChild else {
-      return nil
-    }
-    var previousLeft = self
-    while let leftChild = currentLeft._leftChild {
-      previousLeft = currentLeft
-      currentLeft = leftChild
-    }
-    previousLeft._leftChild = nil
-    return currentLeft._value
   }
 }

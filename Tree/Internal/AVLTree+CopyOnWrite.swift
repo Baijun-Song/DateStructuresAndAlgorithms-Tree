@@ -1,24 +1,26 @@
 extension AVLTree {
-  mutating func _update() {
+  @inlinable @inline(__always)
+  mutating func update() {
     guard
-      !isKnownUniquelyReferenced(&_root),
-      let root = _root
+      !isKnownUniquelyReferenced(&root),
+      let root = root
     else {
       return
     }
-    _root = __duplicate(root)
+    self.root = _duplicate(root)
   }
   
-  private func __duplicate(
+  @usableFromInline
+  func _duplicate(
     _ node: _Node
   ) -> _Node {
-    let newNode = _Node(value: node._value)
-    newNode._height = node._height
-    if let leftChild = node._leftChild {
-      newNode._leftChild = __duplicate(leftChild)
+    let newNode = _Node(value: node.value)
+    newNode.height = node.height
+    if let leftChild = node.leftChild {
+      newNode.leftChild = _duplicate(leftChild)
     }
-    if let rightChild = node._rightChild {
-      newNode._rightChild = __duplicate(rightChild)
+    if let rightChild = node.rightChild {
+      newNode.rightChild = _duplicate(rightChild)
     }
     return newNode
   }

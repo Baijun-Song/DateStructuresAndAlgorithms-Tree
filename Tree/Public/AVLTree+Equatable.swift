@@ -1,9 +1,11 @@
 extension AVLTree: Equatable {
+  @inlinable @inline(__always)
   public static func == (lhs: Self, rhs: Self) -> Bool {
-    __isEqual(lhs._root, rhs._root)
+    _isEqual(lhs.root, rhs.root)
   }
   
-  private static func __isEqual(
+  @usableFromInline
+  static func _isEqual(
     _ node1: _Node?,
     _ node2: _Node?
   ) -> Bool {
@@ -11,9 +13,9 @@ extension AVLTree: Equatable {
     case (nil, nil):
       return true
     case (let node1?, let node2?):
-      let b1 = node1._value == node2._value
-      let b2 = __isEqual(node1._leftChild, node2._leftChild)
-      let b3 = __isEqual(node1._rightChild, node2._rightChild)
+      let b1 = node1.value == node2.value
+      let b2 = _isEqual(node1.leftChild, node2.leftChild)
+      let b3 = _isEqual(node1.rightChild, node2.rightChild)
       return b1 && b2 && b3
     default:
       return false

@@ -1,28 +1,41 @@
 extension AVLTree {
+  @usableFromInline
   final class _Node: _BinaryNode {
-    var _value: Element
-    var _leftChild: _Node?
-    var _rightChild: _Node?
-    var _height = 0
+    @usableFromInline
+    var value: Element
     
-    init(value: Value) {
-      self._value = value
+    @usableFromInline
+    var leftChild: _Node?
+    
+    @usableFromInline
+    var rightChild: _Node?
+    
+    @usableFromInline
+    var height = 0
+    
+    @inlinable @inline(__always)
+    init(value: Element) {
+      self.value = value
     }
     
-    var _leftHeight: Int {
-      _leftChild?._height ?? -1
+    @inlinable @inline(__always)
+    var leftHeight: Int {
+      leftChild?.height ?? -1
     }
     
-    var _rightHeight: Int {
-      _rightChild?._height ?? -1
+    @inlinable @inline(__always)
+    var rightHeight: Int {
+      rightChild?.height ?? -1
     }
     
-    var _balanceFactor: Int {
-      _leftHeight - _rightHeight
+    @inlinable @inline(__always)
+    var balanceFactor: Int {
+      leftHeight - rightHeight
     }
     
-    func _updateHeight() {
-      _height = 1 + max(_leftHeight, _rightHeight)
+    @inlinable @inline(__always)
+    func updateHeight() {
+      height = 1 + max(leftHeight, rightHeight)
     }
   }
 }
