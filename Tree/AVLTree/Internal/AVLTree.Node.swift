@@ -1,21 +1,22 @@
 extension AVLTree {
   @usableFromInline
-  final class _Node: _BinaryNode {
+  final class Node: BinaryNode {
     @usableFromInline
     var value: Element
     
     @usableFromInline
-    var leftChild: _Node?
+    var leftChild: Node?
     
     @usableFromInline
-    var rightChild: _Node?
+    var rightChild: Node?
     
     @usableFromInline
-    var height = 0
+    var height: Int
     
     @inlinable @inline(__always)
-    init(value: Element) {
+    init(value: Element, height: Int = 0) {
       self.value = value
+      self.height = height
     }
     
     @inlinable @inline(__always)

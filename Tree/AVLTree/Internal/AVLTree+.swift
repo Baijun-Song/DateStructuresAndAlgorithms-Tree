@@ -1,8 +1,5 @@
 extension AVLTree {
-  @inlinable @inline(__always)
-  func leftRotate(
-    _ node: _Node
-  ) -> _Node {
+  func leftRotate(_ node: Node) -> Node {
     guard let pivot = node.rightChild else {
       return node
     }
@@ -13,10 +10,7 @@ extension AVLTree {
     return pivot
   }
   
-  @inlinable @inline(__always)
-  func rightRotate(
-    _ node: _Node
-  ) -> _Node {
+  func rightRotate(_ node: Node) -> Node {
     guard let pivot = node.leftChild else {
       return node
     }
@@ -27,10 +21,7 @@ extension AVLTree {
     return pivot
   }
   
-  @inlinable @inline(__always)
-  func rightLeftRotate(
-    _ node: _Node
-  ) -> _Node {
+  func rightLeftRotate(_ node: Node) -> Node {
     guard let rightChild = node.rightChild else {
       return node
     }
@@ -38,10 +29,7 @@ extension AVLTree {
     return leftRotate(node)
   }
   
-  @inlinable @inline(__always)
-  func leftRightRotate(
-    _ node: _Node
-  ) -> _Node {
+  func leftRightRotate(_ node: Node) -> Node {
     guard let leftChild = node.leftChild else {
       return node
     }
@@ -49,54 +37,37 @@ extension AVLTree {
     return rightRotate(node)
   }
   
-  @inlinable
-  func balance(
-    _ node: _Node
-  ) -> _Node {
-    var newNode = node
+  func balance(_ node: Node) -> Node {
     switch node.balanceFactor {
     case 2:
       if let leftChild = node.leftChild {
         if leftChild.balanceFactor == -1 {
-          newNode = leftRightRotate(node)
+          return leftRightRotate(node)
         }
       } else {
-        newNode = rightRotate(node)
+        return rightRotate(node)
       }
     case -2:
       if let rightChild = node.rightChild {
         if rightChild.balanceFactor == 1 {
-          newNode = rightLeftRotate(node)          
+          return rightLeftRotate(node)
         }
       } else {
-        newNode = leftRotate(node)
+        return leftRotate(node)
       }
     default:
-      newNode.updateHeight()
+      node.updateHeight()
     }
-    return newNode
-  }
-  
-  @usableFromInline
-  func _inOrderTraverse(
-    _ node: _Node?,
-    result: inout [Element]
-  ) {
-    guard let node = node else {
-      return
-    }
-    _inOrderTraverse(node.leftChild, result: &result)
-    result.append(node.value)
-    _inOrderTraverse(node.rightChild, result: &result)
+    return node
   }
   
   @usableFromInline
   func _insert(
     _ newElement: Element,
-    from node: _Node?
-  ) -> _Node {
+    from node: Node?
+  ) -> Node {
     guard let node = node else {
-      return _Node(value: newElement)
+      return Node(value: newElement)
     }
     if newElement < node.value {
       node.leftChild = _insert(newElement, from: node.leftChild)
@@ -109,52 +80,49 @@ extension AVLTree {
   @usableFromInline
   func _remove(
     _ element: Element,
-    from node: _Node?,
+    from node: Node?,
     result: inout Element?
-  ) -> _Node? {
+  ) -> Node? {
     guard let node = node else {
       return nil
     }
-    var newNode = node
-    if element == node.value {
-      result = element
-      switch (node.leftChild, node.rightChild) {
-      case let (_?, rightChild?):
-        if let min = rightChild._removeFarLeftLeaf() {
-          newNode.value = min
-        } else {
-          newNode.value = rightChild.value
-          newNode.rightChild = nil
-        }
-      case let (leftChild?, nil):
-        newNode = leftChild
-      case let (nil, rightChild?):
-        newNode = rightChild
-      case (nil, nil):
-        return nil
-      }
-    } else if element < node.value {
-      newNode.leftChild = _remove(
+    if element < node.value {
+      node.leftChild = _remove(
         element,
         from: node.leftChild,
         result: &result
       )
+    } else if element == node.value {
+      result = element
+      switch (node.leftChild, node.rightChild) {
+      case let (_?, rightChild?):
+        if let min = rightChild.removeFarLeftLeaf() {
+          node.value = min
+        } else {
+          node.value = rightChild.value
+          node.rightChild = nil
+        }
+      case let (leftChild?, nil):
+        return balance(leftChild)
+      case let (nil, rightChild?):
+        return balance(rightChild)
+      case (nil, nil):
+        return nil
+      }
     } else {
-      newNode.rightChild = _remove(
+      node.rightChild = _remove(
         element,
         from: node.rightChild,
         result: &result
       )
     }
-    return balance(newNode)
+    return balance(node)
   }
 }
 
-extension AVLTree._Node {
-  // TODO: - private or fileprivate inline
-  // because it's never exposed outside module, will it ever be inlined?
+extension AVLTree.Node {
   @inline(__always)
-  fileprivate func _removeFarLeftLeaf() -> Element? {
+  fileprivate func removeFarLeftLeaf() -> Element? {
     guard var currentLeft = leftChild else {
       return nil
     }

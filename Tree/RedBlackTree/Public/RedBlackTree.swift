@@ -1,23 +1,17 @@
-public struct AVLTree<Element: Comparable> {
+public struct RedBlackTree<Element: Comparable> {
   @usableFromInline
-  var root: _Node?
+  var root: Node?
   
   @inlinable @inline(__always)
   public init() {}
 }
 
-extension AVLTree {
+extension RedBlackTree: BinaryTree {
   @inlinable @inline(__always)
   public var orderedElements: [Element] {
     var result: [Element] = []
-    _inOrderTraverse(root, result: &result)
+    _inOrderTraverse(from: root, result: &result)
     return result
-  }
-  
-  @inlinable @inline(__always)
-  public mutating func insert(_ newElement: Element) {
-    update()
-    root = _insert(newElement, from: root)
   }
   
   @inlinable
@@ -36,11 +30,18 @@ extension AVLTree {
   }
   
   @inlinable @inline(__always)
+  public mutating func insert(_ newElement: Element) {
+    update()
+    root = _insert(
+      newElement,
+      from: root,
+      siblingColor: nil
+    ).newNode
+  }
+  
+  @inlinable @inline(__always)
   @discardableResult
   public mutating func remove(_ element: Element) -> Element? {
-    update()
-    var removedElement: Element?
-    root = _remove(element, from: root, result: &removedElement)
-    return removedElement
+    fatalError("NOT IMPLEMENTED YET")
   }
 }

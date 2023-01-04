@@ -5,13 +5,13 @@ extension AVLTree: CustomStringConvertible {
     }
     let s1 = "AVL Tree:\n"
     let s2 = String(repeating: "-", count: 15) + "\n\n"
-    let s3 = _description(for: root)
+    let s3 = description(for: root)
     let s4 = "\n" + String(repeating: "-", count: 15)
     return s1 + s2 + s3 + s4
   }
   
-  private func _description(
-    for node: _Node?,
+  private func description(
+    for node: Node?,
     top: String = "",
     root: String = "",
     bottom: String = ""
@@ -22,14 +22,14 @@ extension AVLTree: CustomStringConvertible {
     if node.leftChild == nil, node.rightChild == nil {
       return root + "\(node.value)\n"
     } else {
-      let s1 = _description(
+      let s1 = description(
         for: node.rightChild,
         top: top + " ",
         root: top + "┌──",
         bottom: top + "│ "
       )
       let s2 = root + "\(node.value)\n"
-      let s3 = _description(
+      let s3 = description(
         for: node.leftChild,
         top: bottom + "│ ",
         root: bottom + "└──",

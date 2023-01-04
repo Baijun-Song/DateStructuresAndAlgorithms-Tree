@@ -11,11 +11,11 @@ extension AVLTree {
   }
   
   @usableFromInline
-  func _duplicate(
-    _ node: _Node
-  ) -> _Node {
-    let newNode = _Node(value: node.value)
-    newNode.height = node.height
+  func _duplicate(_ node: Node) -> Node {
+    let newNode = Node(
+      value: node.value,
+      height: node.height
+    )
     if let leftChild = node.leftChild {
       newNode.leftChild = _duplicate(leftChild)
     }
