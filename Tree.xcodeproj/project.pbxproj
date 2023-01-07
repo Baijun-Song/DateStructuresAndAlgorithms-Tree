@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0BA7170B2961D7A00003BBFC /* BinaryTree(PublicProtocol).swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7170A2961D7A00003BBFC /* BinaryTree(PublicProtocol).swift */; };
+		0BA7170B2961D7A00003BBFC /* BinaryTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7170A2961D7A00003BBFC /* BinaryTree.swift */; };
 		0BA717112961D7F40003BBFC /* RedBlackTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA717102961D7F40003BBFC /* RedBlackTree.swift */; };
 		0BA717132961D82D0003BBFC /* RedBlackTree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA717122961D82D0003BBFC /* RedBlackTree+Equatable.swift */; };
 		0BA717152961D8520003BBFC /* RedBlackTree+CustomStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA717142961D8520003BBFC /* RedBlackTree+CustomStringConvertable.swift */; };
@@ -19,16 +19,17 @@
 		0BA7172329658B430003BBFC /* RedBlackTree.BranchDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7172229658B430003BBFC /* RedBlackTree.BranchDirection.swift */; };
 		0BA7634429267F010080BF75 /* AVLTree+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA7634329267F010080BF75 /* AVLTree+.swift */; };
 		0BAA46002907A8C800F36AB6 /* Tree.h in Headers */ = {isa = PBXBuildFile; fileRef = 0BAA45FF2907A8C800F36AB6 /* Tree.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0BAA46072907A99800F36AB6 /* BinaryNode(InternalProtocol).swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA46062907A99800F36AB6 /* BinaryNode(InternalProtocol).swift */; };
+		0BAA46072907A99800F36AB6 /* BinaryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA46062907A99800F36AB6 /* BinaryNode.swift */; };
 		0BAA46092907AAB100F36AB6 /* AVLTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA46082907AAB100F36AB6 /* AVLTree.swift */; };
 		0BAA460B2907AABF00F36AB6 /* AVLTree.Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA460A2907AABF00F36AB6 /* AVLTree.Node.swift */; };
 		0BAA460D29081D3400F36AB6 /* AVLTree+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA460C29081D3400F36AB6 /* AVLTree+Equatable.swift */; };
 		0BAA460F29081FEB00F36AB6 /* AVLTree+CustomStringConvertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA460E29081FEB00F36AB6 /* AVLTree+CustomStringConvertable.swift */; };
 		0BAA4611290828A900F36AB6 /* AVLTree+CopyOnWrite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BAA4610290828A900F36AB6 /* AVLTree+CopyOnWrite.swift */; };
+		0BE677D22967180A00DC3276 /* BinaryTree+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE677D12967180A00DC3276 /* BinaryTree+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0BA7170A2961D7A00003BBFC /* BinaryTree(PublicProtocol).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BinaryTree(PublicProtocol).swift"; sourceTree = "<group>"; };
+		0BA7170A2961D7A00003BBFC /* BinaryTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTree.swift; sourceTree = "<group>"; };
 		0BA717102961D7F40003BBFC /* RedBlackTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedBlackTree.swift; sourceTree = "<group>"; };
 		0BA717122961D82D0003BBFC /* RedBlackTree+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RedBlackTree+Equatable.swift"; sourceTree = "<group>"; };
 		0BA717142961D8520003BBFC /* RedBlackTree+CustomStringConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RedBlackTree+CustomStringConvertable.swift"; sourceTree = "<group>"; };
@@ -41,12 +42,13 @@
 		0BA7634329267F010080BF75 /* AVLTree+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVLTree+.swift"; sourceTree = "<group>"; };
 		0BAA45FC2907A8C800F36AB6 /* Tree.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tree.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BAA45FF2907A8C800F36AB6 /* Tree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tree.h; sourceTree = "<group>"; };
-		0BAA46062907A99800F36AB6 /* BinaryNode(InternalProtocol).swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BinaryNode(InternalProtocol).swift"; sourceTree = "<group>"; };
+		0BAA46062907A99800F36AB6 /* BinaryNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryNode.swift; sourceTree = "<group>"; };
 		0BAA46082907AAB100F36AB6 /* AVLTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.swift; sourceTree = "<group>"; };
 		0BAA460A2907AABF00F36AB6 /* AVLTree.Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVLTree.Node.swift; sourceTree = "<group>"; };
 		0BAA460C29081D3400F36AB6 /* AVLTree+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVLTree+Equatable.swift"; sourceTree = "<group>"; };
 		0BAA460E29081FEB00F36AB6 /* AVLTree+CustomStringConvertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVLTree+CustomStringConvertable.swift"; sourceTree = "<group>"; };
 		0BAA4610290828A900F36AB6 /* AVLTree+CopyOnWrite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVLTree+CopyOnWrite.swift"; sourceTree = "<group>"; };
+		0BE677D12967180A00DC3276 /* BinaryTree+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BinaryTree+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,12 +143,37 @@
 			isa = PBXGroup;
 			children = (
 				0BAA45FF2907A8C800F36AB6 /* Tree.h */,
-				0BA7170A2961D7A00003BBFC /* BinaryTree(PublicProtocol).swift */,
-				0BAA46062907A99800F36AB6 /* BinaryNode(InternalProtocol).swift */,
+				0BE677D32967198100DC3276 /* Protocols */,
 				0BA7170C2961D7A90003BBFC /* AVLTree */,
 				0BA7170D2961D7C40003BBFC /* RedBlackTree */,
 			);
 			path = Tree;
+			sourceTree = "<group>";
+		};
+		0BE677D32967198100DC3276 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0BE677D4296719A300DC3276 /* Public */,
+				0BE677D5296719AC00DC3276 /* Internal */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		0BE677D4296719A300DC3276 /* Public */ = {
+			isa = PBXGroup;
+			children = (
+				0BA7170A2961D7A00003BBFC /* BinaryTree.swift */,
+			);
+			path = Public;
+			sourceTree = "<group>";
+		};
+		0BE677D5296719AC00DC3276 /* Internal */ = {
+			isa = PBXGroup;
+			children = (
+				0BAA46062907A99800F36AB6 /* BinaryNode.swift */,
+				0BE677D12967180A00DC3276 /* BinaryTree+.swift */,
+			);
+			path = Internal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -230,10 +257,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BAA460D29081D3400F36AB6 /* AVLTree+Equatable.swift in Sources */,
+				0BE677D22967180A00DC3276 /* BinaryTree+.swift in Sources */,
 				0BA7634429267F010080BF75 /* AVLTree+.swift in Sources */,
-				0BA7170B2961D7A00003BBFC /* BinaryTree(PublicProtocol).swift in Sources */,
+				0BA7170B2961D7A00003BBFC /* BinaryTree.swift in Sources */,
 				0BA717192961D8980003BBFC /* RedBlackTree.Node.swift in Sources */,
-				0BAA46072907A99800F36AB6 /* BinaryNode(InternalProtocol).swift in Sources */,
+				0BAA46072907A99800F36AB6 /* BinaryNode.swift in Sources */,
 				0BA7171B2961D8B50003BBFC /* RedBlackTree+CopyOnWrite.swift in Sources */,
 				0BAA460B2907AABF00F36AB6 /* AVLTree.Node.swift in Sources */,
 				0BA717172961D8680003BBFC /* RedBlackTree+.swift in Sources */,
