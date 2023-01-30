@@ -123,15 +123,15 @@ extension AVLTree {
 extension AVLTree.Node {
   @inline(__always)
   fileprivate func removeFarLeftLeaf() -> Element? {
-    guard var currentLeft = leftChild else {
+    guard var currLeft = leftChild else {
       return nil
     }
-    var previousLeft = self
-    while let leftChild = currentLeft.leftChild {
-      previousLeft = currentLeft
-      currentLeft = leftChild
+    var prevLeft = self
+    while let leftChild = currLeft.leftChild {
+      prevLeft = currLeft
+      currLeft = leftChild
     }
-    previousLeft.leftChild = nil
-    return currentLeft.value
+    prevLeft.leftChild = nil
+    return currLeft.value
   }
 }

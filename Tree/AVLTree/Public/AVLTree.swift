@@ -16,14 +16,14 @@ extension AVLTree: BinaryTree {
   
   @inlinable
   public func contains(_ element: Element) -> Bool {
-    var currentNode = root
-    while let node = currentNode {
+    var currNode = root
+    while let node = currNode {
       if element < node.value {
-        currentNode = node.leftChild
+        currNode = node.leftChild
       } else if element == node.value {
         return true
       } else {
-        currentNode = node.rightChild
+        currNode = node.rightChild
       }
     }
     return false
